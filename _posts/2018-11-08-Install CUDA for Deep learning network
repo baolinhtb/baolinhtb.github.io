@@ -1,0 +1,111 @@
+---
+layout: post
+title: Install CUDA for Deep learning network
+categories: [general, setup]
+tags: [demo, dbyll, dbtek, setup]
+fullview: true
+comments: true
+---
+
+1. Install Nvidia drivers
+# update packages
+sudo apt-get update
+sudo apt-get upgrade
+
+#Add the ppa repo for NVIDIA graphics driver
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+
+#Install the recommended driver (currently nvidia-378)
+
+sudo ubuntu-drivers autoinstall
+sudo reboot
+
+#check if drivers were installed
+nvidia-smi
+2. Install CUDA and cuDNN libraries
+#############################################
+# Instal CUDA Toolkit 8.0 for x64 Ubuntu 16.04 
+wget -O cuda_8_linux.run https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
+sudo chmod +x cuda_8_linux.run
+./cuda_8_linux.run 
+
+
+#Do you accept the previously read EULA?
+#accept
+#Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 367.48?
+#n (we installed drivers previously)
+#Install the CUDA 8.0 Toolkit?
+#y
+#Enter Toolkit Location:
+#/usr/local/cuda-8.0 (enter)
+#Do you wish to run the installation with ‚sudo’?
+#y
+#Do you want to install a symbolic link at /usr/local/cuda?
+#y 
+#Install the CUDA 8.0 Samples?
+#y 
+#Enter CUDA Samples Location:
+#enter
+Nếu xảy ra lỗi:
+sudo service lightdm stop
+
+sudo rm /tmp/*.log
+
+reboot
+
+
+
+Add to env by edit bashrc file
+
+vi ~/.bashrc 
+
+Insert to the lasts line of bash file:
+
+export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+
+
+execute bashrc file to load new env
+
+. ~/.bashrc
+
+Download cuDNN lib theo link sau:
+https://developer.nvidia.com/rdp/cudnn-download
+cuDNN v6.0 Library for Linux
+untar by command: 
+tar -zxvf cudnn-8.0-linux-x64-v5.1.tgz
+# copy libs to /usr/local/cuda folder
+sudo cp -P cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+
+Check installation progress successful:
+nvcc -V
+
+Start lightdm
+sudo service lightdm start
+
+ 
+
+FIX VGA card:
+
+sudo apt-get remove --purge
+
+nvidia-smi
+
+
+sudo apt-get remove --purge nvidia-*
+
+sudo apt-get purge nvidia-*
+
+sudo add-apt-repository ppa:graphics-drivers/ppa
+
+
+sudo ubuntu-drivers autoinstall
+
+### CUDA
+
+<a class="btn btn-default" href="https://github.com/dbtek/dbyll">Grab your copy now!</a>
