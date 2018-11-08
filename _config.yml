@@ -1,59 +1,40 @@
-# Site settings
-title: Another Blog
-url: "http://laobubu.github.io"    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
-baseurl: "/jekyll-theme-EasyBook" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
-#timezone: Asia/Chongqing
-description: >
-  One or more sentences introducing this blog.
+# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
 
-# Your information
-email: your_email@example.com
-author: your_name
-avatar: "//www.gravatar.com/avatar/your_email_md5?d=mm&s=135"
-profile: One sentence introducing yourself.
-#twitter_username: twitter_username
-#github_username:  github_username
-profile_links:
-  Email: "mailto:your_email@example.com"
-  GitHub: "https://github.com/laobubu/jekyll-theme-EasyBook"
-  # You can add more profile links above, or edit _includes/sidebar.html 
-
-# Comment Service (Disqus or 多说)
-#  choose one and un-comment the line to active it
-#disqus_shortname: xxx   # get one: https://disqus.com/admin/signup/
-#duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
-
-excerpt_separator: <!--more-->
-
-header:
-  links:             # Links on the header. Link to in-site page with a slash as prefix
-    About: /about/
-    Category: /category/
-    Donate: https://laobubu.net/donate.html
-
-permalink: /archivers/:title
-plugins:
- - jekyll-paginate
- - jekyll-gist
- - jemoji
-
-# Build settings
-paginate: 5
+paginate: 10 # pagination based on number of posts
 paginate_path: "page:num"
-
+exclude: ["README.md"] # files to exclude
 highlighter: rouge
 markdown: kramdown
+disqus: dbyll
+google_analytics: dbyll
+title: dbyll
 
-# https://jekyllrb.com/docs/configuration/#precedence
 defaults:
   -
     scope:
-      path: ""
-      type: "posts"
+      path: "" # empty string for all files
     values:
-      layout: "post"
+      title: dbyll
 
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  math_engine: mathjax
+description: Stylish Jekyll Theme
+author:
+  name: dbyll
+  email: dbyll@ismaildemirbilek.com
+  github: dbtek
+  twitter: dbtek
+  pinterest: asd123
+  linkedin: asd123
+  bio: Your stylish, minimalist theme!
+  email_md5: 726351295ec82e145928582f595aa3aa
+
+rss_path: feed.xml
+categories_path: categories.html
+tags_path: tags.html
+
+# set it as url of an image
+# sidebar_background_image: https://www.dropbox.com/s/g9h23zrycedxtk5/sky.png?raw=1
+
+BASE_PATH:
+
+plugins:
+  - jekyll-paginate
